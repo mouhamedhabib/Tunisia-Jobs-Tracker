@@ -35,9 +35,10 @@ tunisia-jobs-tracker/
 ├── dashboard/
 │   └── app.py                # Streamlit interactive dashboard
 ├── data/
-│   ├── jobs.db               # SQLite database
-│   └── jobs_cleaned.csv      # Exported CSV
-└── .env                      # Configuration (not committed)
+│   ├── jobs.db               # SQLite database (git-ignored)
+│   └── jobs_cleaned.csv      # Exported CSV (git-ignored)
+├── .env.example              # Environment template
+└── requirements.txt
 ```
 
 ---
@@ -55,10 +56,14 @@ tunisia-jobs-tracker/
 
 ## 🚀 Getting Started
 
+> **Windows users:** This project was developed and tested on **WSL (Windows Subsystem for Linux)** with Ubuntu. It is strongly recommended to run it inside WSL rather than native Windows to avoid path and encoding issues.
+>
+> To enable WSL: `wsl --install` in PowerShell, then follow the [official guide](https://learn.microsoft.com/en-us/windows/wsl/install).
+
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/tunisia-jobs-tracker.git
-cd tunisia-jobs-tracker
+git clone https://github.com/mouhamedhabib/Tunisia-Jobs-Tracker.git
+cd Tunisia-Jobs-Tracker
 ```
 
 ### 2. Create virtual environment
@@ -80,7 +85,7 @@ cp .env.example .env
 Edit `.env` if needed:
 ```
 DB_PATH=./data/jobs.db
-USER_AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36
+USER_AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
 REQUEST_DELAY=2
 MAX_PAGES=10
 LOG_LEVEL=INFO
@@ -93,7 +98,7 @@ python3 -m scrapers.keejob
 python3 -m scrapers.offre_emploi_tn
 ```
 
-### 6. Clean data
+### 6. Clean and normalize data
 ```bash
 python3 -m processing.cleaner
 ```
@@ -129,7 +134,7 @@ CREATE TABLE jobs (
 
 - Parameterized SQL queries — no SQL injection risk
 - URL validation before database insertion
-- DB_PATH restricted to project directory
+- `DB_PATH` restricted to project directory
 - No credentials or API keys required
 
 ---
@@ -153,4 +158,4 @@ MIT License — free to use, modify, and distribute.
 
 ## 👤 Author
 
-Built by **Mohamed habib** · [GitHub] https://github.com/mouhamedhabib· [LinkedIn]https://www.linkedin.com/in/chaieb-mohammed-habib/
+Built by **Mohamed Habib Chaieb** · [GitHub](https://github.com/mouhamedhabib) · [LinkedIn](https://www.linkedin.com/in/chaieb-mohammed-habib/)
