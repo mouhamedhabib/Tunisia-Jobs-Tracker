@@ -2,6 +2,8 @@
 
 A Python web scraping pipeline that collects job listings from major Tunisian job boards, stores them in a structured database, and visualizes the data through an interactive dashboard.
 
+🔗 **Live Demo:** [tn-jobs-tracker.streamlit.app](https://tn-jobs-tracker.streamlit.app/)
+
 ---
 
 ## 📊 Dashboard Preview
@@ -35,8 +37,9 @@ tunisia-jobs-tracker/
 ├── dashboard/
 │   └── app.py                # Streamlit interactive dashboard
 ├── data/
-│   ├── jobs.db               # SQLite database (git-ignored)
-│   └── jobs_cleaned.csv      # Exported CSV (git-ignored)
+│   └── jobs_cleaned.csv      # Latest scraped data (auto-updated daily)
+├── .github/workflows/
+│   └── scrape.yml            # GitHub Actions — runs scrapers daily at 6AM UTC
 ├── .env.example              # Environment template
 └── requirements.txt
 ```
@@ -50,6 +53,7 @@ tunisia-jobs-tracker/
 - **SQLite** — lightweight local database with migration system
 - **pandas** — data cleaning and normalization
 - **Streamlit** — interactive dashboard
+- **GitHub Actions** — daily automated scraping
 - **python-dotenv** — environment configuration
 
 ---
@@ -110,6 +114,19 @@ streamlit run dashboard/app.py
 
 ---
 
+## 🤖 Automated Updates
+
+This project uses **GitHub Actions** to automatically scrape and update data every day at 6:00 AM UTC.
+
+The workflow:
+1. Runs all three scrapers
+2. Cleans and normalizes the data
+3. Exports `jobs_cleaned.csv`
+4. Commits and pushes the updated CSV to the repository
+5. Streamlit Cloud picks up the new data automatically
+
+---
+
 ## 🗄️ Database Schema
 ```sql
 CREATE TABLE jobs (
@@ -146,6 +163,7 @@ CREATE TABLE jobs (
 | Total listings | ~440 |
 | Cities covered | 10+ governorates |
 | Sources | 3 |
+| Auto-update | Daily via GitHub Actions |
 | Duplicate prevention | URL UNIQUE constraint |
 
 ---
