@@ -4,8 +4,7 @@
 # Environment variables - contains sensitive info
 .env
 
-# Database file - too large for GitHub
-data/
+
 
 # Python cache files - generated automatically
 __pycache__/
