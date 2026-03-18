@@ -1,5 +1,6 @@
 requests
 beautifulsoup4
 pandas
-streamlit
+streamlit>=1.40.0
 python-dotenv
+altair>=5.0.0
