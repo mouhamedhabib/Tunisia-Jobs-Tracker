@@ -1,11 +1,6 @@
 import streamlit as st
 import pandas as pd
-import sqlite3
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
-DB_PATH = os.getenv("DB_PATH", "./data/jobs.db")
 
 st.set_page_config(
     page_title="Tunisia Jobs Tracker",
@@ -13,14 +8,15 @@ st.set_page_config(
     layout="wide"
 )
 
+CSV_PATH = os.getenv("CSV_PATH", "./data/jobs_cleaned.csv")
 
-@st.cache_data(ttl=300)
+
+@st.cache_data(ttl=3600)
 def load_data() -> pd.DataFrame:
-    """Load jobs from database."""
-    conn = sqlite3.connect(DB_PATH)
-    df = pd.read_sql_query("SELECT * FROM jobs", conn)
-    conn.close()
-    return df
+    """Load jobs from CSV file."""
+    if not os.path.exists(CSV_PATH):
+        return pd.DataFrame()
+    return pd.read_csv(CSV_PATH)
 
 
 def main():
@@ -30,7 +26,7 @@ def main():
     df = load_data()
 
     if df.empty:
-        st.warning("No data found. Run the scraper first.")
+        st.warning("No data found.")
         return
 
     # ── Metrics ─────────────────────────────────────────────────
@@ -117,7 +113,6 @@ def main():
     with f4:
         search = st.text_input("Search title or company")
 
-    # Apply filters
     filtered = df.copy()
 
     if selected_contract != "All":
