@@ -8,7 +8,7 @@ A Python web scraping pipeline that collects job listings from major Tunisian jo
 
 ## 📊 Dashboard Preview
 
-> Built with Streamlit — filters by city, contract type, and source.
+> Built with Streamlit — filters by city, contract type, and source..
 
 ---
 
