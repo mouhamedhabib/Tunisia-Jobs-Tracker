@@ -1,0 +1,16 @@
+# Virtual environment - never upload this
+.venv/
+
+# Environment variables - contains sensitive info
+.env
+
+# Database file - too large for GitHub
+data/
+
+# Python cache files - generated automatically
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
