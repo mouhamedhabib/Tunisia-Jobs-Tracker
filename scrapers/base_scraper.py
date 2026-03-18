@@ -45,7 +45,7 @@ class BaseScraper:
             response = self.session.get(url, timeout=10)
             response.raise_for_status()  # Raises error if status is 4xx or 5xx
             time.sleep(self.delay)       # Wait between requests
-            return BeautifulSoup(response.text, "lxml")
+            return BeautifulSoup(response.text, "html.parser")
 
         except requests.exceptions.HTTPError as e:
             logger.error(f"HTTP error {e.response.status_code} for {url}")
