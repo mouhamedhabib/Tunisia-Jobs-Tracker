@@ -8,7 +8,15 @@ A Python web scraping pipeline that collects job listings from major Tunisian jo
 
 ## 📊 Dashboard Preview
 
-> Built with Streamlit — filters by city, contract type, and source..
+<p align="center">
+  <img src="./data/1.png" width="80%" alt="Dashboard Overview"/>
+  <br/><br/>
+  <img src="./data/2.png" width="80%" alt="Job Listings Filter"/>
+  <br/><br/>
+  <img src="./data/3.png" width="80%" alt="Data Visualization"/>
+</p>
+
+> Built with Streamlit — filters by city, contract type, and source.
 
 ---
 
@@ -23,6 +31,7 @@ A Python web scraping pipeline that collects job listings from major Tunisian jo
 ---
 
 ## 🏗️ Project Structure
+
 ```
 tunisia-jobs-tracker/
 ├── scrapers/
@@ -128,6 +137,7 @@ The workflow:
 ---
 
 ## 🗄️ Database Schema
+
 ```sql
 CREATE TABLE jobs (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
