@@ -180,7 +180,7 @@ CREATE TABLE jobs (
 
 ## 📝 License
 
-MIT License — free to use, modify, and distribute.
+MIT License — free to use, modify, and distribute..
 
 ---
 
